@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- define the dependency -->
+	<bean id ="revisionTip" 
+		  class="com.gl.serviceImpl.RevisionTip"></bean>
+	<!-- Setting up bean -->
+
+	<bean id="hindiTeacher"
+		  class="com.gl.serviceImpl.HindiTeacher" init-method="doInitialJob" destroy-method="destroyJob">
+		  <!-- set up constructor injection -->
+		  <constructor-arg ref="revisionTip"/>
+	 </bean>
+	<bean id="GKTeacher"
+		  class="com.gl.serviceImpl.GKTeacher">
+		<constructor-arg ref="revisionTip"></constructor-arg>	  
+	</bean>
+	<bean id="teacher"
+		  class="com.gl.serviceImpl.MathTeacher">
+			<constructor-arg ref="revisionTip"/>	  
+	</bean>
+		  
+	
+</beans>
+
+
+
+
+
